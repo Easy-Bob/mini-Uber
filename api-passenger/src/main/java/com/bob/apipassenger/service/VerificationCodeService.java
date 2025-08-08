@@ -3,6 +3,7 @@ package com.bob.apipassenger.service;
 import com.bob.apipassenger.remote.ServiceVerificationClient;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.internalcommon.constant.response.NumberCodeResponse;
+import com.bob.internalcommon.constant.response.TokenResponse;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -25,6 +26,11 @@ public class VerificationCodeService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * 生成验证码
+     * @param passengerPhone 手机号
+     * @return
+     */
     public ResponseResult generateCode(String passengerPhone){
         // 调用验证码服务，获取验证码
         System.out.println("调用验证码服务，获取验证码");
@@ -44,5 +50,24 @@ public class VerificationCodeService {
         // 通过短信服务商，发送验证码到手机上
         // 如阿里短信服务，腾讯短信通
         return ResponseResult.success();
+    }
+
+    /**
+     * 校验验证码
+     * @param passengerPhone 手机号
+     * @param verificationCode 验证码
+     * @return
+     */
+    public ResponseResult checkCode(String passengerPhone, String verificationCode){
+        // 根据手机号，去redis读取验证码
+        System.out.println("根据手机号，去redis读取验证码");
+
+        System.out.println("校验验证码");
+        System.out.println("判断原来是否有用户，并进行对应的请求");
+        System.out.println("颁发令牌");
+
+        TokenResponse tokenResponse = new TokenResponse();
+        tokenResponse.setToken("token value");
+        return ResponseResult.success(tokenResponse);
     }
 }
