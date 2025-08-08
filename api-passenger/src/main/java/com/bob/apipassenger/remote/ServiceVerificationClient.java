@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @FeignClient("service-verificationcode")
 public interface ServiceVerificationClient {
-    @RequestMapping(method = RequestMethod.GET, value = "/numberCode/{size")
+    @RequestMapping(method = RequestMethod.GET, value = "/numberCode/{size}")
     ResponseResult<NumberCodeResponse> getNumberCode(@PathVariable("size") int size);
 
 }
