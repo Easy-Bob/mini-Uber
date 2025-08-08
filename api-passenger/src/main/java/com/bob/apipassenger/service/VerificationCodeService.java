@@ -25,7 +25,7 @@ public class VerificationCodeService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    public String generateCode(String passengerPhone){
+    public ResponseResult generateCode(String passengerPhone){
         // 调用验证码服务，获取验证码
         System.out.println("调用验证码服务，获取验证码");
 
@@ -41,9 +41,8 @@ public class VerificationCodeService {
         // value = numberCode
         stringRedisTemplate.opsForValue().set(key, String.valueOf(numberCode), 2, TimeUnit.MINUTES);
 
-        JSONObject result = new JSONObject();
-        result.put("code", 1);
-        result.put("message", "success");
-        return result.toString();
+        // 通过短信服务商，发送验证码到手机上
+        // 如阿里短信服务，腾讯短信通
+        return ResponseResult.success();
     }
 }
