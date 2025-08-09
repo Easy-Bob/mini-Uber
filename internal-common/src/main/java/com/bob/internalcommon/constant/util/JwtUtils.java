@@ -3,13 +3,11 @@ package com.bob.internalcommon.constant.util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.bob.internalcommon.constant.constant.IdentityConstant;
+import com.bob.internalcommon.constant.constant.IdentityConstants;
+import com.bob.internalcommon.constant.constant.TokenConstants;
 import com.bob.internalcommon.constant.dto.TokenResult;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,11 +23,15 @@ public class JwtUtils {
     private static final String JWT_KEY_PHONE = "passengerPhone";
 
     private static final String JWT_KEY_IDENTITY = "identity";
+
+    private static final String JWT_TOKEN_TYPE = "tokenType";
+
     // 生成token
-    public static String generateToken(String passengerPhone, String identity){
+    public static String generateToken(String passengerPhone, String identity, String tokenType){
         Map<String, String> map = new HashMap<>();
         map.put(JWT_KEY_PHONE, passengerPhone);
         map.put(JWT_KEY_IDENTITY, identity);
+        map.put(JWT_TOKEN_TYPE, tokenType);
 
         // token过期时间
 //        Calendar calendar = Calendar.getInstance();
@@ -66,7 +68,7 @@ public class JwtUtils {
 
 
     public static void main(String[] args) {
-        String s = generateToken("12234239839", IdentityConstant.PASSENGER_IDENTITY);
+        String s = generateToken("12234239839", IdentityConstants.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);
         System.out.println(s);
         System.out.println("解析---");
         TokenResult tokenResult = parseToken(s);
