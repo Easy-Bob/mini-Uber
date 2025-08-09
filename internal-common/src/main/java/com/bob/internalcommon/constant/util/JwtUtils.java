@@ -3,11 +3,16 @@ package com.bob.internalcommon.constant.util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.bob.internalcommon.constant.constant.IdentityConstants;
 import com.bob.internalcommon.constant.constant.TokenConstants;
 import com.bob.internalcommon.constant.dto.TokenResult;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +31,8 @@ public class JwtUtils {
 
     private static final String JWT_TOKEN_TYPE = "tokenType";
 
+    private static final String JWT_TOKEN_TIME = "tokenTime";
+
     // 生成token
     public static String generateToken(String passengerPhone, String identity, String tokenType){
         Map<String, String> map = new HashMap<>();
@@ -33,10 +40,8 @@ public class JwtUtils {
         map.put(JWT_KEY_IDENTITY, identity);
         map.put(JWT_TOKEN_TYPE, tokenType);
 
-        // token过期时间
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.add(Calendar.DATE, 1);
-//        Date date = calendar.getTime();
+        // 防止每次token生成的唯一性
+        map.put(JWT_TOKEN_TIME, Calendar.getInstance().getTime().toString());
 
         JWTCreator.Builder builder = JWT.create();
         // 整合map
@@ -64,6 +69,17 @@ public class JwtUtils {
         tokenResult.setPassengerPhone(phone);
         tokenResult.setIdentity(identity);
         return tokenResult;
+    }
+
+    public static TokenResult checkToken(String token){
+        TokenResult tokenResult = null;
+        try{
+            tokenResult = JwtUtils.parseToken(token);
+        }catch (Exception e){
+
+        }finally {
+            return tokenResult;
+        }
     }
 
 
