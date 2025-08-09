@@ -1,8 +1,10 @@
 package com.bob.apipassenger.service;
 
+import com.bob.apipassenger.remote.ServicePassengerUserClient;
 import com.bob.apipassenger.remote.ServiceVerificationClient;
 import com.bob.internalcommon.constant.CommonStatusEnum;
 import com.bob.internalcommon.constant.dto.ResponseResult;
+import com.bob.internalcommon.constant.request.VerificationCodeDTO;
 import com.bob.internalcommon.constant.response.NumberCodeResponse;
 import com.bob.internalcommon.constant.response.TokenResponse;
 import net.sf.json.JSONObject;
@@ -22,6 +24,9 @@ public class VerificationCodeService {
 
     @Autowired
     private ServiceVerificationClient serviceVerificationClient;
+
+    @Autowired
+    private ServicePassengerUserClient servicePassengerUserClient;
 
     private String verificationCodePrefix = "passenger-verification-code-";
 
@@ -81,7 +86,10 @@ public class VerificationCodeService {
             return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode(), CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
         }
         // 判断原来是否有用户，并进行对应的请求
-        System.out.println("判断原来是否有用户，并进行对应的请求");
+        VerificationCodeDTO verificationCodeDTO = new VerificationCodeDTO();
+        verificationCodeDTO.setPassengerPhone(passengerPhone);
+        servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
+
         System.out.println("颁发令牌");
 
         TokenResponse tokenResponse = new TokenResponse();
