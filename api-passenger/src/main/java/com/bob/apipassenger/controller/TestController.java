@@ -42,6 +42,6 @@ public class TestController {
      */
     @GetMapping("/noauthTest")
     public ResponseResult noAuthTest(){
-        return ResponseResult.success("noAuth test");
+        return ResponseResult.success("noauth test");
     }
 }

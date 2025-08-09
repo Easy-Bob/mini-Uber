@@ -36,7 +36,7 @@ public class JwtInterceptor implements HandlerInterceptor {
             resultString = "token AlgorithmMismatchException";
             result = false;
         }catch (Exception e){
-            resultString = "token invalic";
+            resultString = "token invalid";
             result = false;
         }
 

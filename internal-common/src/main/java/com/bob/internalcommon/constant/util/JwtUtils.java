@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.bob.internalcommon.constant.constant.IdentityConstant;
 import com.bob.internalcommon.constant.dto.TokenResult;
 
 import java.util.Calendar;
@@ -65,7 +66,7 @@ public class JwtUtils {
 
 
     public static void main(String[] args) {
-        String s = generateToken("12234239839", "passenger");
+        String s = generateToken("12234239839", IdentityConstant.PASSENGER_IDENTITY);
         System.out.println(s);
         System.out.println("解析---");
         TokenResult tokenResult = parseToken(s);
