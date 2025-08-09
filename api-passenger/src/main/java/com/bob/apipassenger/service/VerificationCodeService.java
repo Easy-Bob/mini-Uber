@@ -3,6 +3,7 @@ package com.bob.apipassenger.service;
 import com.bob.apipassenger.remote.ServicePassengerUserClient;
 import com.bob.apipassenger.remote.ServiceVerificationClient;
 import com.bob.internalcommon.constant.constant.CommonStatusEnum;
+import com.bob.internalcommon.constant.constant.IdentityConstant;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.internalcommon.constant.request.VerificationCodeDTO;
 import com.bob.internalcommon.constant.response.NumberCodeResponse;
@@ -33,6 +34,7 @@ public class VerificationCodeService {
     private ServicePassengerUserClient servicePassengerUserClient;
 
     private String verificationCodePrefix = "passenger-verification-code-";
+    private String tokenPrefix = "token-";
 
     // 连接redis
     @Autowired
@@ -74,6 +76,16 @@ public class VerificationCodeService {
     }
 
     /**
+     * 生成token关键字
+     * @param passengerPhone
+     * @param identity
+     * @return
+     */
+    private String generateTokenKey(String passengerPhone, String identity){
+        return tokenPrefix + passengerPhone + "-" + identity;
+    }
+
+    /**
      * 校验验证码
      * @param passengerPhone 手机号
      * @param verificationCode 验证码
@@ -99,7 +111,11 @@ public class VerificationCodeService {
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌
-        String token = JwtUtils.generateToken(passengerPhone, PASSENGER_IDENTITY);
+        String token = JwtUtils.generateToken(passengerPhone, IdentityConstant .PASSENGER_IDENTITY);
+
+        //  将token存储到redis中
+        String tokenKey = generateTokenKey(passengerPhone, IdentityConstant .PASSENGER_IDENTITY);
+        stringRedisTemplate.opsForValue().set(tokenKey, token, 30, TimeUnit.DAYS);
 
         // 响应
         TokenResponse tokenResponse = new TokenResponse();

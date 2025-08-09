@@ -32,9 +32,9 @@ public class JwtUtils {
         map.put(JWT_KEY_IDENTITY, identity);
 
         // token过期时间
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE, 1);
-        Date date = calendar.getTime();
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.add(Calendar.DATE, 1);
+//        Date date = calendar.getTime();
 
         JWTCreator.Builder builder = JWT.create();
         // 整合map
@@ -44,7 +44,7 @@ public class JwtUtils {
             }
         );
         // 整合过期时间
-        builder.withExpiresAt(date);
+//        builder.withExpiresAt(date);
 
         // 生成 token
         String sign = builder.sign(Algorithm.HMAC256(SIGN));
