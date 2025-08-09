@@ -2,18 +2,20 @@ package com.bob.apipassenger.service;
 
 import com.bob.apipassenger.remote.ServicePassengerUserClient;
 import com.bob.apipassenger.remote.ServiceVerificationClient;
-import com.bob.internalcommon.constant.CommonStatusEnum;
+import com.bob.internalcommon.constant.constant.CommonStatusEnum;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.internalcommon.constant.request.VerificationCodeDTO;
 import com.bob.internalcommon.constant.response.NumberCodeResponse;
 import com.bob.internalcommon.constant.response.TokenResponse;
-import net.sf.json.JSONObject;
+import com.bob.internalcommon.constant.util.JwtUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.bob.internalcommon.constant.constant.IdentityConstant.PASSENGER_IDENTITY;
 
 /**
  * Created by Sun on 2025/8/8.
@@ -96,10 +98,12 @@ public class VerificationCodeService {
         // 调用微服务，进行用户注册/登入，存储数据库
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
-        System.out.println("颁发令牌");
+        // 颁发令牌
+        String token = JwtUtils.generateToken(passengerPhone, PASSENGER_IDENTITY);
 
+        // 响应
         TokenResponse tokenResponse = new TokenResponse();
-        tokenResponse.setToken("token value");
+        tokenResponse.setToken(token);
         return ResponseResult.success(tokenResponse);
     }
 }

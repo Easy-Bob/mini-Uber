@@ -1,6 +1,6 @@
 package com.bob.internalcommon.constant.dto;
 
-import com.bob.internalcommon.constant.CommonStatusEnum;
+import com.bob.internalcommon.constant.constant.CommonStatusEnum;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

@@ -1,4 +1,4 @@
-package com.bob.internalcommon.constant;
+package com.bob.internalcommon.constant.constant;
 
 import lombok.Getter;
 
