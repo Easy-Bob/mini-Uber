@@ -1,5 +1,6 @@
 package com.bob.apipassenger.controller;
 
+import com.bob.internalcommon.constant.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,5 +25,23 @@ public class TestController {
     public String testRedis() {
         redisTemplate.opsForValue().set("testKey", "Hello Redis!");
         return redisTemplate.opsForValue().get("testKey");
+    }
+
+    /**
+     * 需要有token
+     * @return
+     */
+    @GetMapping("/authTest")
+    public ResponseResult authTest(){
+        return ResponseResult.success("auth test");
+    }
+
+    /**
+     * 不需要有token
+     * @return
+     */
+    @GetMapping("/noauthTest")
+    public ResponseResult noAuthTest(){
+        return ResponseResult.success("noAuth test");
     }
 }

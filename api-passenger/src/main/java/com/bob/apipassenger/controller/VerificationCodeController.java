@@ -41,7 +41,6 @@ public class VerificationCodeController {
         String verificationCode = verificationCodeDTO.getVerificationCode();
         System.out.println("手机号：" + passengerPhone + ", 验证码：" + verificationCode);
 
-        //调用微服务：校验验证码
         return verificationCodeService.checkCode(passengerPhone, verificationCode);
     }
 
