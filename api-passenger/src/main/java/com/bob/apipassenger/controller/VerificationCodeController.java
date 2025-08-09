@@ -19,12 +19,19 @@ public class VerificationCodeController {
     @Autowired
     private VerificationCodeService verificationCodeService;
 
+    /**
+     * 只传入手机号，作为参数
+     * 生成验证码
+     * @param verificationCodeDTO
+     * @return
+     */
     @GetMapping("/verification-code")
     public ResponseResult verificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO){
 //        接收手机号
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
         System.out.println("接收到的手机号：" + passengerPhone);
 
+//        调用验证码：生成验证码
         return verificationCodeService.generateCode(passengerPhone);
     }
 
@@ -33,6 +40,8 @@ public class VerificationCodeController {
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
         String verificationCode = verificationCodeDTO.getVerificationCode();
         System.out.println("手机号：" + passengerPhone + ", 验证码：" + verificationCode);
+
+        //调用微服务：校验验证码
         return verificationCodeService.checkCode(passengerPhone, verificationCode);
     }
 

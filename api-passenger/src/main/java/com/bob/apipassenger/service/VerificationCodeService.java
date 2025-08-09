@@ -22,14 +22,17 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class VerificationCodeService {
 
+    // 生成验证码服务
     @Autowired
     private ServiceVerificationClient serviceVerificationClient;
 
+    //校验验证码服务
     @Autowired
     private ServicePassengerUserClient servicePassengerUserClient;
 
     private String verificationCodePrefix = "passenger-verification-code-";
 
+    // 连接redis
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
@@ -47,7 +50,7 @@ public class VerificationCodeService {
 
         System.out.println("Remote number Code: " + numberCode);
 
-//        存入Redis
+//        存储Redis
         System.out.println("存入Redis");
         //key value expiration-time
         String key = generateKeyByPhone(passengerPhone);
@@ -85,9 +88,12 @@ public class VerificationCodeService {
         }else if(!verificationCode.trim().equals(codeRedis)){
             return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode(), CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
         }
-        // 判断原来是否有用户，并进行对应的请求
+
+        // 验证码校验成功，进行下一步：用户注册或登入
         VerificationCodeDTO verificationCodeDTO = new VerificationCodeDTO();
         verificationCodeDTO.setPassengerPhone(passengerPhone);
+
+        // 调用微服务，进行用户注册/登入，存储数据库
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         System.out.println("颁发令牌");
