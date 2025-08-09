@@ -1,5 +1,6 @@
 package com.bob.servicepassengeruser.service;
 
+import com.bob.internalcommon.constant.constant.CommonStatusEnum;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.internalcommon.constant.dto.PassengerUser;
 import com.bob.servicepassengeruser.mapper.PassengerUserMapper;
@@ -48,5 +49,17 @@ public class UserService {
         }
 
         return ResponseResult.success();
+    }
+
+    public ResponseResult getUserByPhone(String passengerPhone){
+        Map<String, Object> map = new HashMap<>();
+        map.put("passenger_phone", passengerPhone);
+        List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
+        if(passengerUsers == null || passengerUsers.size() == 0){
+            return ResponseResult.fail(CommonStatusEnum.USER_NOT_EXISTS.getCode(), CommonStatusEnum.USER_NOT_EXISTS.getValue());
+        }else{
+            PassengerUser p = passengerUsers.get(0);
+            return ResponseResult.success(p);
+        }
     }
 }
