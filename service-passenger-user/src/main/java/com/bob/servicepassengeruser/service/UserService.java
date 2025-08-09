@@ -1,12 +1,10 @@
 package com.bob.servicepassengeruser.service;
 
 import com.bob.internalcommon.constant.dto.ResponseResult;
-import com.bob.internalcommon.constant.request.VerificationCodeDTO;
-import com.bob.servicepassengeruser.dto.PassengerUser;
+import com.bob.internalcommon.constant.dto.PassengerUser;
 import com.bob.servicepassengeruser.mapper.PassengerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

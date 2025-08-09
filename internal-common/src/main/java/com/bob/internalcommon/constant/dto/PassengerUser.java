@@ -1,4 +1,4 @@
-package com.bob.servicepassengeruser.dto;
+package com.bob.internalcommon.constant.dto;
 
 import lombok.Data;
 
@@ -17,5 +17,6 @@ public class PassengerUser {
     private String passengerName;
     private byte passengerGender;
     private byte state;
+    private String profilePhoto;
 
 }
