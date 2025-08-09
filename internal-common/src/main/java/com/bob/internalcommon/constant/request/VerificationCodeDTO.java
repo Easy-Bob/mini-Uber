@@ -1,4 +1,4 @@
-package com.bob.apipassenger.request;
+package com.bob.internalcommon.constant.request;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.bob.apipassenger.controller;
 
-import com.bob.apipassenger.request.VerificationCodeDTO;
+import com.bob.internalcommon.constant.request.VerificationCodeDTO;
 import com.bob.apipassenger.service.VerificationCodeService;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
