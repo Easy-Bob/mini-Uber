@@ -52,7 +52,7 @@ public class MapDirectionClient {
 
         // 解析接口
         DirectionResponse directionResponse = parseDirectionEntity(directionString);
-
+//        log.info(directionResponse.toString());
         return directionResponse;
     }
 

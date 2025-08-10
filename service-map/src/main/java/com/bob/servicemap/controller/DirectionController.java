@@ -3,6 +3,7 @@ package com.bob.servicemap.controller;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.internalcommon.constant.request.ForecastPriceDTO;
 import com.bob.servicemap.service.DirectionService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/direction")
+@Slf4j
 public class DirectionController {
 
     @Autowired
@@ -22,7 +24,6 @@ public class DirectionController {
 
     @GetMapping("/driving")
     public ResponseResult driving(@RequestBody ForecastPriceDTO forecastPriceDTO){
-
         String depLongitude =  forecastPriceDTO.getDepLongitude();
         String depLatitude = forecastPriceDTO.getDepLatitude();
         String destLongitude = forecastPriceDTO.getDestLongitude();
