@@ -1,5 +1,7 @@
 package com.bob.apiBoss.remote;
 
+import com.bob.internalcommon.constant.dto.Car;
+import com.bob.internalcommon.constant.dto.DriverCarBindingRelationship;
 import com.bob.internalcommon.constant.dto.DriverUser;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Description:
  */
 @FeignClient("service-driver-user")
-public interface DriverUserClient {
+public interface DriverUserCarClient {
 
     @RequestMapping(method = RequestMethod.POST, value = "/user")
     public ResponseResult addDriverUser(@RequestBody DriverUser driverUser);
@@ -20,4 +22,12 @@ public interface DriverUserClient {
     @RequestMapping(method = RequestMethod.PUT, value = "/user")
     public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser);
 
+    @RequestMapping(method = RequestMethod.POST, value = "/car")
+    public ResponseResult addCar(@RequestBody Car car);
+
+    @RequestMapping(method = RequestMethod.POST, value = "/driver-car-binding-relationship/bind")
+    public ResponseResult driverCarBind(@RequestBody DriverCarBindingRelationship o);
+
+    @RequestMapping(method = RequestMethod.POST, value = "/driver-car-binding-relationship/unbind")
+    public ResponseResult driverCarUnbind(@RequestBody DriverCarBindingRelationship o);
 }

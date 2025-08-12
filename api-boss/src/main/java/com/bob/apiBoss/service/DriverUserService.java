@@ -1,6 +1,6 @@
 package com.bob.apiBoss.service;
 
-import com.bob.apiBoss.remote.DriverUserClient;
+import com.bob.apiBoss.remote.DriverUserCarClient;
 import com.bob.internalcommon.constant.dto.DriverUser;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class DriverUserService {
 
     @Autowired
-    private DriverUserClient driverUserClient;
+    private DriverUserCarClient driverUserClient;
 
     public ResponseResult addDriverUser(DriverUser driverUser){
         return driverUserClient.addDriverUser(driverUser);
