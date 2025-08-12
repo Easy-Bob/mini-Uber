@@ -31,7 +31,6 @@ public class DicDistrictService {
     public ResponseResult initDicDistrict(String keywords){
         // 请求地图
         String dicDistrictResult = mapDistrictClient.dicDistrict(keywords);
-//        System.out.println(dicDistrict);
         // 解析结果
         JSONObject dicDistrictJsonObject = JSONObject.fromObject(dicDistrictResult);
         int status = dicDistrictJsonObject.getInt(AmapConfigConstants.STATUS);
@@ -42,6 +41,7 @@ public class DicDistrictService {
 
         JSONArray countryJSONArray = dicDistrictJsonObject.getJSONArray(AmapConfigConstants.DISTRICTS);
 
+        // 递归插入数据库
         traverseJSON(countryJSONArray, "0");
 
         return ResponseResult.success();
