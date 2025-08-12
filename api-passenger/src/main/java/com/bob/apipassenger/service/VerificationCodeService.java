@@ -57,7 +57,7 @@ public class VerificationCodeService {
 //        存储Redis
         System.out.println("存入Redis");
         //key value expiration-time
-        String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generateKeyByPhone(IdentityConstants.PASSENGER_IDENTITY, passengerPhone);
         // value = numberCode
         stringRedisTemplate.opsForValue().set(key, String.valueOf(numberCode), 2, TimeUnit.MINUTES);
 
@@ -75,7 +75,7 @@ public class VerificationCodeService {
      */
     public ResponseResult checkCode(String passengerPhone, String verificationCode){
         // 根据手机号，去redis读取验证码
-        String key = generateKeyByPhone(passengerPhone);
+        String key = generateKeyByPhone(PASSENGER_IDENTITY, passengerPhone);
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
         System.out.println("redis中的value:" + codeRedis);
         // 校验验证码
@@ -87,7 +87,7 @@ public class VerificationCodeService {
 
         // 验证码校验成功，进行下一步：用户注册或登入
         VerificationCodeDTO verificationCodeDTO = new VerificationCodeDTO();
-        verificationCodeDTO.setPassengerPhone(passengerPhone);
+        verificationCodeDTO.setPhone(passengerPhone);
 
         // 调用微服务，进行用户注册/登入，存储数据库
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);

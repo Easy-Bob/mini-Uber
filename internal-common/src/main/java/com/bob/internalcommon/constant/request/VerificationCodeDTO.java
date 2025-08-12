@@ -9,7 +9,9 @@ import lombok.Data;
 @Data
 public class VerificationCodeDTO {
 
+    private String phone;
     private String passengerPhone;
+    private String driverPhone;
 
     private String verificationCode;
 

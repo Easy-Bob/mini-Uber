@@ -6,25 +6,26 @@ package com.bob.internalcommon.constant.util;
  */
 public class RedisPrefixUtils {
 
-    private static String verificationCodePrefix = "passenger-verification-code-";
+    private static String verificationCodePrefix = "-verification-code-";
     private static String tokenPrefix = "token-";
 
     /**
      * 根据手机号生成key
-     * @param passengerPhone
+     * @param identity
+     * @param phone
      * @return
      */
-    public static String generateKeyByPhone(String passengerPhone){
-        return verificationCodePrefix + passengerPhone;
+    public static String generateKeyByPhone(String identity, String phone){
+        return identity + verificationCodePrefix + phone;
     }
 
     /**
      * 生成token关键字
-     * @param passengerPhone
+     * @param phone
      * @param identity
      * @return
      */
-    public static String generateTokenKey(String passengerPhone, String identity, String tokenType){
-        return tokenPrefix + passengerPhone + "-" + identity + "-" + tokenType;
+    public static String generateTokenKey(String phone, String identity, String tokenType){
+        return tokenPrefix + phone + "-" + identity + "-" + tokenType;
     }
 }

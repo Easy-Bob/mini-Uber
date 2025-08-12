@@ -4,9 +4,7 @@ import com.bob.apiDriver.service.DriverUserService;
 import com.bob.internalcommon.constant.dto.DriverUser;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Sun on 2025/8/12.
@@ -21,4 +19,5 @@ public class DriverUserController {
     public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser){
         return driverUserService.updateDriverUser(driverUser);
     }
+
 }

@@ -1,5 +1,7 @@
 package com.bob.serviceDriverUser.service;
 
+import com.bob.internalcommon.constant.constant.CommonStatusEnum;
+import com.bob.internalcommon.constant.constant.DriverCarConstants;
 import com.bob.internalcommon.constant.dto.DriverUser;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.serviceDriverUser.mapper.DriverUserMapper;
@@ -8,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Sun on 2025/8/11.
@@ -37,5 +42,17 @@ public class DriverUserService {
         driverUser.setGmtModified(now);
         driverUserMapper.updateById(driverUser);
         return ResponseResult.success("");
+    }
+
+    public ResponseResult getDriverUser(String driverPhone){
+        Map<String, Object> map = new HashMap<>();
+        map.put("driver_phone", driverPhone);
+        map.put("state", DriverCarConstants.DRIVER_STATE_VALID);
+        List<DriverUser> driverUsers = driverUserMapper.selectByMap(map);
+        if(driverUsers == null || driverUsers.isEmpty()){
+            return ResponseResult.fail(CommonStatusEnum.DRIVER_NOT_EXIST.getCode(), CommonStatusEnum.DRIVER_NOT_EXIST.getValue());
+        }
+        DriverUser driverUser = driverUsers.get(0);
+        return ResponseResult.success(driverUser);
     }
 }
