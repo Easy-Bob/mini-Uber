@@ -6,8 +6,8 @@
         <artifactId>online-taxi</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>api-passenger</artifactId>
-    <name>Archetype - api-passenger</name>
+    <artifactId>api-boss</artifactId>
+    <name>Archetype - api-boss</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>
@@ -16,13 +16,8 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-<!--    add nacos-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
 
-<!--        调用其它微服务时需要-->
+        <!--        调用其它微服务时需要-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -32,10 +27,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
-
+        <!--    add nacos-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
     </dependencies>
 </project>

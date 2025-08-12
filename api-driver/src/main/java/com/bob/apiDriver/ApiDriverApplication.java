@@ -1,19 +1,17 @@
-package com.bob.serviceDriverUser;
+package com.bob.apiDriver;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * Created by Sun on 2025/8/11.
+ * Created by Sun on 2025/8/12.
  * Description:
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@MapperScan("com.bob.serviceDriverUser.mapper")
-public class ServiceDriverUserApplication {
+public class ApiDriverApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceDriverUserApplication.class, args);
+        SpringApplication.run(ApiDriverApplication.class, args);
     }
 }

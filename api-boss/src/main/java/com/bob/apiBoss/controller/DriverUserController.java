@@ -1,8 +1,8 @@
-package com.bob.serviceDriverUser.controller;
+package com.bob.apiBoss.controller;
 
+import com.bob.apiBoss.service.DriverUserService;
 import com.bob.internalcommon.constant.dto.DriverUser;
 import com.bob.internalcommon.constant.dto.ResponseResult;
-import com.bob.serviceDriverUser.service.DriverUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,20 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
  * Description:
  */
 @RestController
-public class UserController {
+public class DriverUserController {
 
     @Autowired
     private DriverUserService driverUserService;
 
-    @PostMapping("/user")
-    public ResponseResult addUser(@RequestBody DriverUser driverUser){
-
+    @PostMapping("/driver-user")
+    public ResponseResult addDriverUser(@RequestBody DriverUser driverUser){
         return driverUserService.addDriverUser(driverUser);
     }
 
-    @PutMapping("/user")
-    public ResponseResult updateUser(@RequestBody DriverUser driverUser){
-
+    @PutMapping("/driver-user")
+    public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser){
         return driverUserService.updateDriverUser(driverUser);
     }
 }
