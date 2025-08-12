@@ -3,8 +3,10 @@ package com.bob.serviceDriverUser.service;
 import com.bob.internalcommon.constant.constant.CommonStatusEnum;
 import com.bob.internalcommon.constant.constant.DriverCarConstants;
 import com.bob.internalcommon.constant.dto.DriverUser;
+import com.bob.internalcommon.constant.dto.DriverUserWorkStatus;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.serviceDriverUser.mapper.DriverUserMapper;
+import com.bob.serviceDriverUser.mapper.DriverUserWorkStatusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,9 @@ public class DriverUserService {
     @Autowired
     private DriverUserMapper driverUserMapper;
 
+    @Autowired
+    private DriverUserWorkStatusMapper driverUserWorkStatusMapper;
+
     public ResponseResult testGetDriverUser(){
         DriverUser driverUser = driverUserMapper.selectById(1);
         return ResponseResult.success(driverUser);
@@ -34,6 +39,17 @@ public class DriverUserService {
         driverUser.setGmtCreate(now);
         driverUser.setGmtModified(now);
         driverUserMapper.insert(driverUser);
+
+        // 初始化 司机工作状态表
+        DriverUserWorkStatus driverUserWorkStatus = new DriverUserWorkStatus();
+        driverUserWorkStatus.setDriverId(Long.valueOf(driverUser.getId()));
+        driverUserWorkStatus.setWorkStatus(DriverCarConstants.DRIVER_WORK_STATUS_STOP);
+        driverUserWorkStatus.setGmtCreate(now);
+        driverUserWorkStatus.setGmtModified(now);
+
+        driverUserWorkStatusMapper.insert(driverUserWorkStatus);
+
+
         return ResponseResult.success("");
     }
 
