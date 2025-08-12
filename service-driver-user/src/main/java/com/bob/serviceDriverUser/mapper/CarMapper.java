@@ -1,7 +1,7 @@
 package com.bob.serviceDriverUser.mapper;
 
-import com.bob.internalcommon.constant.dto.Car;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.bob.internalcommon.constant.dto.Car;
 import org.springframework.stereotype.Repository;
 
 /**
