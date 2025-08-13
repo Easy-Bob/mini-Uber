@@ -18,8 +18,11 @@ public class AmapConfigConstants {
     // 终端添加
     public static final String TERMINAL_ADD_URL = "https://tsapi.amap.com/v1/track/terminal/add";
 
+    // 轨迹添加
+    public static final String TRACK_ADD_URL = "https://tsapi.amap.com/v1/track/trace/add";
 
-
+    // 轨迹上传
+    public static final String TRACK_UPLOAD_URL = "https://tsapi.amap.com/v1/track/point/upload";
 
     // 路径规划 key
     public static final String STATUS = "status";

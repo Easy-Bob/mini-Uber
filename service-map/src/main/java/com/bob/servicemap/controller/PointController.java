@@ -1,10 +1,11 @@
 package com.bob.servicemap.controller;
 
 import com.bob.internalcommon.constant.dto.ResponseResult;
-import com.bob.internalcommon.constant.response.TerminalResponse;
-import com.bob.servicemap.service.TerminalService;
+import com.bob.internalcommon.constant.request.PointRequest;
+import com.bob.servicemap.service.PointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
  * Description:
  */
 @RestController
-@RequestMapping("/terminal")
-public class TerminalController {
+@RequestMapping("/point")
+public class PointController {
 
     @Autowired
-    private TerminalService terminalService;
+    private PointService pointService;
 
-    @PostMapping("/add")
-    public ResponseResult<TerminalResponse> add(String name, String desc){
-        return terminalService.add(name, desc);
+    @PostMapping("/upload")
+    public ResponseResult upload(@RequestBody PointRequest pointRequest){
+        return pointService.upload(pointRequest);
     }
 
 }
