@@ -1,0 +1,43 @@
+服务创建
+{
+    "errcode": 10000,
+    "errmsg": "OK",
+    "data": {
+        "name": "MiniUber",
+        "sid": 1052368
+    }
+}
+
+终端创建
+{
+    "errcode": 10000,
+    "errmsg": "OK",
+    "data": {
+        "name": "Car1",
+        "tid": 1433470254,
+        "sid": 1052368
+    }
+}
+
+终端删除
+{
+    "errcode": 10000,
+    "errmsg": "OK"
+}
+
+终端查询
+{
+    "errcode": 10000,
+    "errmsg": "OK",
+    "data": {
+        "count": 1,
+        "results": [
+            {
+                "name": "Car1",
+                "tid": 1433478490,
+                "createtime": 1755061782733,
+                "locatetime": 0
+            }
+        ]
+    }
+}
