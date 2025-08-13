@@ -24,6 +24,9 @@ public class AmapConfigConstants {
     // 轨迹上传
     public static final String TRACK_UPLOAD_URL = "https://tsapi.amap.com/v1/track/point/upload";
 
+    // 车辆范围查询
+    public static final String TERMINAL_AROUND_URL = "https://tsapi.amap.com/v1/track/terminal/aroundsearch";
+
     // 路径规划 key
     public static final String STATUS = "status";
     public static final String ROUTE = "route";
