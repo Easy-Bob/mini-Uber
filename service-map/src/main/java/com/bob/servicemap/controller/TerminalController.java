@@ -1,6 +1,7 @@
 package com.bob.servicemap.controller;
 
 import com.bob.internalcommon.constant.dto.ResponseResult;
+import com.bob.internalcommon.constant.response.TerminalResponse;
 import com.bob.servicemap.service.TerminalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class TerminalController {
     private TerminalService terminalService;
 
     @PostMapping("/add")
-    public ResponseResult add(String name){
+    public ResponseResult<TerminalResponse> add(String name){
         return terminalService.add(name);
     }
 

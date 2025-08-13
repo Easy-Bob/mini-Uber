@@ -3,6 +3,7 @@ package com.bob.serviceDriverUser.controller;
 
 import com.bob.internalcommon.constant.dto.Car;
 import com.bob.internalcommon.constant.dto.ResponseResult;
+import com.bob.serviceDriverUser.remote.ServiceMapClient;
 import com.bob.serviceDriverUser.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

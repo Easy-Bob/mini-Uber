@@ -1,6 +1,7 @@
 package com.bob.servicemap.service;
 
 import com.bob.internalcommon.constant.dto.ResponseResult;
+import com.bob.internalcommon.constant.response.TerminalResponse;
 import com.bob.servicemap.remote.TerminalClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class TerminalService {
     @Autowired
     private TerminalClient terminalClient;
 
-    public ResponseResult add(String name){
+    public ResponseResult<TerminalResponse> add(String name){
         return terminalClient.add(name);
     }
 }
