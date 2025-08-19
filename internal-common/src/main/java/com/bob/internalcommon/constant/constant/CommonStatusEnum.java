@@ -24,6 +24,7 @@ public enum CommonStatusEnum {
      * 计算规则不存在
      */
     PRICE_RULE_EMPTY(1300, "计价规则不存在"),
+    PRICE_RULE_EXISTS(1301,"计价规则存在，不允许重复添加"),
 
     /**
      * 地图信息
@@ -40,6 +41,13 @@ public enum CommonStatusEnum {
     DRIVER_CAR_UNBIND_EXISTS (1503, "司机和车辆已解绑，请勿重复操作"),
     DRIVER_BIND_EXISTS (1504, "司机以被绑定，请勿重复操作"),
     CAR_BIND_EXISTS (1505, "车辆以被绑定，请勿重复操作"),
+
+    /**
+     * Order: 1600 -1699
+     */
+    ORDER_PENDING(1600, "ORDER_PENDING"),
+    DEVICE_IS_BLACKED(1601, "DEVICE_IS_BLACKED"),
+
 
     SUCCESS(1, "success"),
     FAIL(0, "fail")

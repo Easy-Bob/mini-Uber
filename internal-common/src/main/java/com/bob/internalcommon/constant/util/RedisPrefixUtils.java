@@ -8,6 +8,7 @@ public class RedisPrefixUtils {
 
     private static String verificationCodePrefix = "-verification-code-";
     private static String tokenPrefix = "token-";
+    private static String blackDeviceCodePrefix = "black-";
 
     /**
      * 根据手机号生成key
@@ -27,5 +28,9 @@ public class RedisPrefixUtils {
      */
     public static String generateTokenKey(String phone, String identity, String tokenType){
         return tokenPrefix + phone + "-" + identity + "-" + tokenType;
+    }
+
+    public static String generateBlackDeviceKey(String deviceCode){
+        return blackDeviceCodePrefix + deviceCode;
     }
 }
