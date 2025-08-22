@@ -2,7 +2,9 @@ package com.bob.serviceorder.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bob.internalcommon.constant.constant.CommonStatusEnum;
+import com.bob.internalcommon.constant.constant.IdentityConstants;
 import com.bob.internalcommon.constant.constant.OrderInfoConstants;
+import com.bob.internalcommon.constant.dto.Car;
 import com.bob.internalcommon.constant.dto.OrderInfo;
 import com.bob.internalcommon.constant.dto.PriceRule;
 import com.bob.internalcommon.constant.dto.ResponseResult;
@@ -113,8 +115,8 @@ public class OrderInfoService {
      * 2km - 4km - 6km (then back to 2km and loop)
      * @param orderInfo
      */
-    public void dispatchRealTimeOrder(OrderInfo orderInfo) {
-
+    public int dispatchRealTimeOrder(OrderInfo orderInfo) {
+        int result = 1;
         // 2km
         String depLongitude = orderInfo.getDepLongitude();
         String depLatitude = orderInfo.getDepLatitude();
@@ -173,13 +175,72 @@ public class OrderInfoService {
                     lock.lock();
 
 
-                    lock.unlock();
-                    // dispatch to the designated car
+// 判断司机 是否有进行中的订单
+                    if (isOrderPending(driverId) > 0){
+                        lock.unlock();
+                        continue ;
+                    }
+                    // 订单直接匹配司机
+                    // 查询当前车辆信息
+                    QueryWrapper<Car> carQueryWrapper = new QueryWrapper<>();
+                    carQueryWrapper.eq("id",carId);
 
-                    // end loop if successful to dispatch a car
+
+                    // 设置订单中和司机车辆相关的信息
+                    orderInfo.setDriverId(driverId);
+                    orderInfo.setDriverPhone(driverPhone);
+                    orderInfo.setCarId(carId);
+                    // 从地图中来
+                    orderInfo.setReceiveOrderCarLongitude(longitude);
+                    orderInfo.setReceiveOrderCarLatitude(latitude);
+
+                    orderInfo.setReceiveOrderTime(LocalDateTime.now());
+                    orderInfo.setLicenseId(licenseId);
+                    orderInfo.setVehicleNo(vehicleNo);
+                    orderInfo.setOrderStatus(OrderInfoConstants.DRIVER_RECEIVE_ORDER);
+
+                    orderInfoMapper.updateById(orderInfo);
+
+                    // 通知司机
+                    JSONObject driverContent = new  JSONObject();
+
+                    driverContent.put("orderId",orderInfo.getId());
+                    driverContent.put("passengerId",orderInfo.getPassengerId());
+                    driverContent.put("passengerPhone",orderInfo.getPassengerPhone());
+                    driverContent.put("departure",orderInfo.getDeparture());
+                    driverContent.put("depLongitude",orderInfo.getDepLongitude());
+                    driverContent.put("depLatitude",orderInfo.getDepLatitude());
+
+                    driverContent.put("destination",orderInfo.getDestination());
+                    driverContent.put("destLongitude",orderInfo.getDestLongitude());
+                    driverContent.put("destLatitude",orderInfo.getDestLatitude());
+
+
+                    // 通知乘客
+                    JSONObject passengerContent = new  JSONObject();
+                    passengerContent.put("orderId",orderInfo.getId());
+                    passengerContent.put("driverId",orderInfo.getDriverId());
+                    passengerContent.put("driverPhone",orderInfo.getDriverPhone());
+                    passengerContent.put("vehicleNo",orderInfo.getVehicleNo());
+                    // 车辆信息，调用车辆服务
+                    ResponseResult<Car> carById = null;
+//                    carById = serviceDriverUserClient.getCarById(carId);
+                    Car carRemote = carById.getData();
+
+                    passengerContent.put("brand", carRemote.getBrand());
+                    passengerContent.put("model",carRemote.getModel());
+                    passengerContent.put("vehicleColor",carRemote.getVehicleColor());
+
+                    passengerContent.put("receiveOrderCarLongitude",orderInfo.getReceiveOrderCarLongitude());
+                    passengerContent.put("receiveOrderCarLatitude",orderInfo.getReceiveOrderCarLatitude());
+
+                    result = 1;
+                    lock.unlock();
+
                 }
             }
         }
+        return result;
     }
 
     private boolean hasPriceRule(OrderRequest orderRequest){
