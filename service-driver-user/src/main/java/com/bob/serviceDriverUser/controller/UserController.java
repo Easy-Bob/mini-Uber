@@ -4,6 +4,7 @@ import com.bob.internalcommon.constant.constant.DriverCarConstants;
 import com.bob.internalcommon.constant.dto.DriverUser;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.internalcommon.constant.response.DriverUserExistsResponse;
+import com.bob.internalcommon.constant.response.OrderDriverResponse;
 import com.bob.serviceDriverUser.service.DriverUserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,15 @@ public class UserController {
         response.setIfExists(ifExists);
 
         return ResponseResult.success(response);
+    }
+
+    /**
+     * 根据车辆Id查询订单需要的司机信息
+     * @param carId
+     * @return
+     */
+    @GetMapping("/get-available-driver/{carId}")
+    public ResponseResult<OrderDriverResponse> getAvailableDriver(@PathVariable("carId") Long carId){
+        return driverUserService.getAvailableDriver(carId);
     }
 }

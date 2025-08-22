@@ -41,6 +41,8 @@ public enum CommonStatusEnum {
     DRIVER_CAR_UNBIND_EXISTS (1503, "司机和车辆已解绑，请勿重复操作"),
     DRIVER_BIND_EXISTS (1504, "司机以被绑定，请勿重复操作"),
     CAR_BIND_EXISTS (1505, "车辆以被绑定，请勿重复操作"),
+    CITY_DRIVER_EMPTY(1506,"CITY_DRIVER_EMPTY"),
+    NO_DRIVER_NEARBY(1507, "NO_DRIVER_NEARBY"),
 
     /**
      * Order: 1600 -1699

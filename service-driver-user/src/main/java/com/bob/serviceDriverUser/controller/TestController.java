@@ -1,6 +1,7 @@
 package com.bob.serviceDriverUser.controller;
 
 import com.bob.internalcommon.constant.dto.ResponseResult;
+import com.bob.serviceDriverUser.mapper.DriverUserMapper;
 import com.bob.serviceDriverUser.service.DriverUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,5 +25,16 @@ public class TestController {
     @GetMapping("/test-db")
     public ResponseResult testDb(){
         return driverUserService.testGetDriverUser();
+    }
+
+    @Autowired
+    DriverUserMapper driverUserMapper;
+
+    // test mapper.xml validity
+    @GetMapping("/test-xml")
+    public int testXml(String cityCode){
+        int i = driverUserMapper.selectDriverUserCountByCityCode(cityCode);
+        System.out.println(i);
+        return i;
     }
 }

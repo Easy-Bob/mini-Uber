@@ -8,6 +8,7 @@ import com.bob.serviceprice.mapper.PriceRuleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.ws.Response;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,5 +80,22 @@ public class PriceRuleService {
             }
         }
         return ResponseResult.fail(CommonStatusEnum.PRICE_RULE_EMPTY.getCode(), CommonStatusEnum.PRICE_RULE_EMPTY.getValue());
+    }
+
+    public ResponseResult<Boolean> ifExists(PriceRule priceRule){
+        String cityCode = priceRule.getCityCode();
+        String vehicleType = priceRule.getVehicleType();
+
+        QueryWrapper<PriceRule> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("city_code", cityCode);
+        queryWrapper.eq("vehicle_type", vehicleType);
+        queryWrapper.orderByDesc("fare_version");
+
+        List<PriceRule> priceRules = priceRuleMapper.selectList(queryWrapper);
+        if(priceRules == null || priceRules.size() == 0){
+            return ResponseResult.success(false);
+        }else{
+            return ResponseResult.success(true);
+        }
     }
 }

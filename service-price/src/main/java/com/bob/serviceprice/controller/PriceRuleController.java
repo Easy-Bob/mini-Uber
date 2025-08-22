@@ -4,10 +4,7 @@ import com.bob.internalcommon.constant.dto.PriceRule;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.serviceprice.service.PriceRuleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Sun on 8/17/2025.
@@ -28,5 +25,10 @@ public class PriceRuleController {
     @PostMapping("/edit")
     public ResponseResult edit(@RequestBody PriceRule priceRule){
         return priceRuleService.edit(priceRule);
+    }
+
+    @PostMapping("/if-exists")
+    public ResponseResult<Boolean> ifExists(@RequestBody PriceRule priceRule){
+        return priceRuleService.ifExists(priceRule);
     }
 }
