@@ -1,0 +1,8 @@
+server:
+  port: 9001
+
+alipay:
+  appId: 1
+  appPrivateKey: 1
+  publicKey: 1
+  notifyUrl: 1

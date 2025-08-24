@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="daab5277-7d5b-46b9-a691-e481f3bb9e37" name="Changes" comment="第七节：&#10;redisson;&#10;services-sse-comm initialization and test setup">
+      <change afterPath="$PROJECT_DIR$/service-sse-push/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-sse-push/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-sse-push/src/main/java/com/bob/servicessepush/controller/SseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-sse-push/src/main/java/com/bob/servicessepush/controller/com/bob/servicessepush/ServiceSsePushApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-sse-push/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-sse-push/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-sse-push/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-sse-push/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\apache-maven-3.9.4\conf\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.9.4" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.9.4\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="30zizLqyb33NbPF4g3dTij3YfUB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "D:/MiniUber/online-taxi/service-sse-comm/src/main/java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "spring.configuration.checksum": "8527d080f396cf8e0c651e9abe7ad502",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MiniUber\online-taxi\service-sse-comm\src\main\java" />
+      <recent name="D:\MiniUber\online-taxi\service-sse-comm\src\main\resources" />
+      <recent name="D:\MiniUber\online-taxi\service-order\src\main\resources" />
+      <recent name="D:\MiniUber\online-taxi\api-driver\src\main\resources" />
+      <recent name="D:\MiniUber\online-taxi\service-driver-user\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MiniUber\online-taxi\service-driver-user\src\main\resources\com\bob\serviceDriverUser\mapper" />
+      <recent name="D:\MiniUber\online-taxi\service-driver-user\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.bob.service" />
+      <recent name="com.bob.apiDriver.controller" />
+      <recent name="com.bob.internalcommon.constant.response" />
+      <recent name="com.bob.internalcommon.constant.request" />
+      <recent name="com.bob.serviceorder.remote" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ServiceSseCommWeb">
+    <configuration name="ServiceMapApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service-map" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bob.servicemap.ServiceMapApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bob.servicemap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceOrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service-order" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bob.serviceorder.ServiceOrderApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bob.serviceorder.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServicePriceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service-price" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bob.serviceprice.ServicePriceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bob.serviceprice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceSseCommWeb" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service-sse-comm" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bob.servicessecomm.ServiceSseCommWeb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bob.servicessecomm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SseDriverClientWeb" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service-sse-push" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bob.ssedriverclientweb.SseDriverClientWeb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bob.ssedriverclientweb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.ServiceSseCommWeb" />
+        <item itemvalue="Spring Boot.SseDriverClientWeb" />
+        <item itemvalue="Spring Boot.ServiceOrderApplication" />
+        <item itemvalue="Spring Boot.ServiceMapApplication" />
+        <item itemvalue="Spring Boot.ServicePriceApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBootOptions">
+    <option name="showAdditionalConfigNotification" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="daab5277-7d5b-46b9-a691-e481f3bb9e37" name="Changes" comment="" />
+      <created>1754637063939</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754637063939</updated>
+      <workItem from="1754637065010" duration="7840000" />
+      <workItem from="1754645186916" duration="6069000" />
+      <workItem from="1754695190786" duration="29312000" />
+      <workItem from="1754744661326" duration="2619000" />
+      <workItem from="1754798816411" duration="8819000" />
+      <workItem from="1754813596107" duration="8560000" />
+      <workItem from="1754884070857" duration="7000" />
+      <workItem from="1754884970389" duration="7232000" />
+      <workItem from="1754915797165" duration="1872000" />
+      <workItem from="1754918445877" duration="521000" />
+      <workItem from="1754918980063" duration="977000" />
+      <workItem from="1754964236602" duration="11771000" />
+      <workItem from="1754983980354" duration="6805000" />
+      <workItem from="1754995212924" duration="5109000" />
+      <workItem from="1755059088320" duration="13017000" />
+      <workItem from="1755083399815" duration="7380000" />
+      <workItem from="1755394741986" duration="3670000" />
+      <workItem from="1755408159832" duration="1204000" />
+      <workItem from="1755438308599" duration="10150000" />
+      <workItem from="1755487643820" duration="34000" />
+      <workItem from="1755574672024" duration="2655000" />
+      <workItem from="1755577341008" duration="3000" />
+      <workItem from="1755601167841" duration="27373000" />
+      <workItem from="1755656690073" duration="22000" />
+      <workItem from="1755656794096" duration="1332000" />
+      <workItem from="1755689667705" duration="3163000" />
+      <workItem from="1755779892631" duration="1260000" />
+      <workItem from="1755817674268" duration="1942000" />
+      <workItem from="1755828343359" duration="688000" />
+      <workItem from="1755861659617" duration="750000" />
+      <workItem from="1755906684406" duration="959000" />
+      <workItem from="1755983734818" duration="13326000" />
+      <workItem from="1756040391888" duration="208000" />
+      <workItem from="1756040605594" duration="7137000" />
+      <workItem from="1756048901355" duration="6365000" />
+    </task>
+    <task id="LOCAL-00001" summary="完成nacos注册中心；&#10;完成api-passenger注册；&#10;完成service-verificationcode注册">
+      <option name="closed" value="true" />
+      <created>1754641601654</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754641601655</updated>
+    </task>
+    <task id="LOCAL-00002" summary="完成api-passenger验证码请求和service-verification验证码返回">
+      <option name="closed" value="true" />
+      <created>1754655025223</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754655025223</updated>
+    </task>
+    <task id="LOCAL-00003" summary="解决ServiceVerificationClient漏}，导致地址错误的问题">
+      <option name="closed" value="true" />
+      <created>1754655695442</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1754655695442</updated>
+    </task>
+    <task id="LOCAL-00004" summary="完善Redis存储(需要安装)">
+      <option name="closed" value="true" />
+      <created>1754657199147</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754657199147</updated>
+    </task>
+    <task id="LOCAL-00005" summary="完成本地Redis安装；&#10;完成校验验证码">
+      <option name="closed" value="true" />
+      <created>1754696827721</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1754696827721</updated>
+    </task>
+    <task id="LOCAL-00006" summary="添加“用户注册”骨架">
+      <option name="closed" value="true" />
+      <created>1754702749501</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1754702749501</updated>
+    </task>
+    <task id="LOCAL-00007" summary="完成验证码校验；&#10;完成&#10;api-passenger&#10;(1) service-verification-code&#10;(2) service-passenger-user&#10;三个微服务的调用">
+      <option name="closed" value="true" />
+      <created>1754713761984</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1754713761984</updated>
+    </task>
+    <task id="LOCAL-00008" summary="学习JWT token生成">
+      <option name="closed" value="true" />
+      <created>1754717364913</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1754717364913</updated>
+    </task>
+    <task id="LOCAL-00009" summary="学习JWT token解析">
+      <option name="closed" value="true" />
+      <created>1754717870918</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1754717870918</updated>
+    </task>
+    <task id="LOCAL-00010" summary="完成api-passenger 颁发令牌">
+      <option name="closed" value="true" />
+      <created>1754718970632</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1754718970632</updated>
+    </task>
+    <task id="LOCAL-00011" summary="测试token的使用">
+      <option name="closed" value="true" />
+      <created>1754721399250</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1754721399250</updated>
+    </task>
+    <task id="LOCAL-00012" summary="token拦截器的编写">
+      <option name="closed" value="true" />
+      <created>1754721837548</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1754721837548</updated>
+    </task>
+    <task id="LOCAL-00013" summary="token拦截器测试">
+      <option name="closed" value="true" />
+      <created>1754723459914</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1754723459914</updated>
+    </task>
+    <task id="LOCAL-00014" summary="把token存储到Redis">
+      <option name="closed" value="true" />
+      <created>1754724197376</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1754724197376</updated>
+    </task>
+    <task id="LOCAL-00015" summary="验证Redis中的token">
+      <option name="closed" value="true" />
+      <created>1754728574183</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1754728574183</updated>
+    </task>
+    <task id="LOCAL-00016" summary="双token生成，存储">
+      <option name="closed" value="true" />
+      <created>1754730611520</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1754730611520</updated>
+    </task>
+    <task id="LOCAL-00017" summary="完成token-refresh,联调">
+      <option name="closed" value="true" />
+      <created>1754739822990</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1754739822990</updated>
+    </task>
+    <task id="LOCAL-00018" summary="完成查询乘客信息骨架代码编写">
+      <option name="closed" value="true" />
+      <created>1754744286164</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1754744286164</updated>
+    </task>
+    <task id="LOCAL-00019" summary="完成查询乘客信息编写">
+      <option name="closed" value="true" />
+      <created>1754745964510</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1754745964510</updated>
+    </task>
+    <task id="LOCAL-00020" summary="完成Feign调用查询乘客信息编写；&#10;注意GET时传递参数：需要在路径上添加参数，而不是方法体中，否则会走POST">
+      <option name="closed" value="true" />
+      <created>1754747277972</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1754747277972</updated>
+    </task>
+    <task id="LOCAL-00021" summary="完成价格预估骨架编写，完成经纬度传入测试">
+      <option name="closed" value="true" />
+      <created>1754802582013</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1754802582013</updated>
+    </task>
+    <task id="LOCAL-00022" summary="完成service-price骨架编写，完成经纬度传入测试">
+      <option name="closed" value="true" />
+      <created>1754808661453</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1754808661453</updated>
+    </task>
+    <task id="LOCAL-00023" summary="完成service-map创建">
+      <option name="closed" value="true" />
+      <created>1754809087044</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1754809087044</updated>
+    </task>
+    <task id="LOCAL-00024" summary="完成service-map高德地图api接口，成功根据起点和终点经纬度，获取路程和时长">
+      <option name="closed" value="true" />
+      <created>1754813971273</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1754813971273</updated>
+    </task>
+    <task id="LOCAL-00025" summary="&#10;编写计价规则数据库，读取数据库">
+      <option name="closed" value="true" />
+      <created>1754825979463</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1754825979463</updated>
+    </task>
+    <task id="LOCAL-00026" summary="完成计价；&#10;api-passenger,service-price,service-map联调；&#10;第四节结束">
+      <option name="closed" value="true" />
+      <created>1754828902815</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1754828902815</updated>
+    </task>
+    <task id="LOCAL-00027" summary="第五节：&#10;连接：地区数据库;&#10;获取地区查询拼接地址">
+      <option name="closed" value="true" />
+      <created>1754898579005</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1754898579005</updated>
+    </task>
+    <task id="LOCAL-00028" summary="第五节：&#10;完成 地区查询 存入数据库">
+      <option name="closed" value="true" />
+      <created>1754902200299</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1754902200299</updated>
+    </task>
+    <task id="LOCAL-00029" summary="第五节：&#10;完成 司机表 插入编写，测试">
+      <option name="closed" value="true" />
+      <created>1754966255849</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1754966255849</updated>
+    </task>
+    <task id="LOCAL-00030" summary="第五节：&#10;完成 api-boss;&#10;完成 api-driver创建">
+      <option name="closed" value="true" />
+      <created>1754968893318</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1754968893318</updated>
+    </task>
+    <task id="LOCAL-00031" summary="第五节：&#10;完成 api-driver 和 service-driver-user联调完成数据修改">
+      <option name="closed" value="true" />
+      <created>1754973900640</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1754973900640</updated>
+    </task>
+    <task id="LOCAL-00032" summary="第五节：&#10;逆向工程 生成car对象，并作 统一化修改">
+      <option name="closed" value="true" />
+      <created>1754976312015</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1754976312015</updated>
+    </task>
+    <task id="LOCAL-00033" summary="第五节：&#10;完成 driver-car-relationship 绑定/解绑 操作和测试">
+      <option name="closed" value="true" />
+      <created>1754980515587</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1754980515587</updated>
+    </task>
+    <task id="LOCAL-00034" summary="第五节：&#10;完成 api-boss与&#10;service-driver-user添加车辆和绑定/解绑 编写和联调">
+      <option name="closed" value="true" />
+      <created>1754982077316</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1754982077316</updated>
+    </task>
+    <task id="LOCAL-00035" summary="第五节：&#10;完成 api-driver查询司机是否存在，并请求验证码">
+      <option name="closed" value="true" />
+      <created>1754996668024</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1754996668024</updated>
+    </task>
+    <task id="LOCAL-00036" summary="第五节：&#10;完成 api-driver司机验证码校验">
+      <option name="closed" value="true" />
+      <created>1754998151757</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1754998151757</updated>
+    </task>
+    <task id="LOCAL-00037" summary="第五节：&#10;完成 service-driver-user司机工作状态表 插入；&#10;第五节完结">
+      <option name="closed" value="true" />
+      <created>1755000305178</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1755000305178</updated>
+    </task>
+    <task id="LOCAL-00038" summary="第六节：&#10;service-map管理车辆柜子&#10;完成 服务中心创建和终端（车辆注册）创建">
+      <option name="closed" value="true" />
+      <created>1755066459226</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1755066459226</updated>
+    </task>
+    <task id="LOCAL-00039" summary="第六节：&#10;service-driver-user添加车辆时，同时在终端注册车辆（实现：调用service-map）">
+      <option name="closed" value="true" />
+      <created>1755068053371</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1755068053371</updated>
+    </task>
+    <task id="LOCAL-00040" summary="第六节：&#10;终端轨迹；&#10;改造终端，增加desc字段，快速查询">
+      <option name="closed" value="true" />
+      <created>1755088430305</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1755088430305</updated>
+    </task>
+    <task id="LOCAL-00041" summary="第六节：&#10;完结">
+      <option name="closed" value="true" />
+      <created>1755091352446</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1755091352446</updated>
+    </task>
+    <task id="LOCAL-00042" summary="第七节：&#10;完成乘客端 参数传递 接口">
+      <option name="closed" value="true" />
+      <created>1755408878719</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1755408878719</updated>
+    </task>
+    <task id="LOCAL-00043" summary="第七节：&#10;Passenger order blacklist setup(redis)">
+      <option name="closed" value="true" />
+      <created>1755610366656</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1755610366656</updated>
+    </task>
+    <task id="LOCAL-00044" summary="第七节：&#10;Dispatch orders to driver with Redisson to solve concurrency problems">
+      <option name="closed" value="true" />
+      <created>1755861764950</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1755861764950</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Order dispatching">
+      <option name="closed" value="true" />
+      <created>1755862287777</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1755862287777</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="完成service-map创建" />
+    <MESSAGE value="完成service-map高德地图api接口，成功根据起点和终点经纬度，获取路程和时长" />
+    <MESSAGE value="&#10;编写计价规则数据库，读取数据库" />
+    <MESSAGE value="完成计价；&#10;api-passenger,service-price,service-map联调；&#10;第四节结束" />
+    <MESSAGE value="第五节：&#10;连接：地区数据库;&#10;获取地区查询拼接地址" />
+    <MESSAGE value="第五节：&#10;完成 地区查询 存入数据库" />
+    <MESSAGE value="第五节：&#10;完成 司机表 创建；&#10;完成司机查询 骨架搭建" />
+    <MESSAGE value="第五节：&#10;完成 司机表 插入编写，测试" />
+    <MESSAGE value="第五节：&#10;完成 api-boss;&#10;完成 api-driver创建" />
+    <MESSAGE value="第五节：&#10;完成 api-driver 和 service-driver-user联调完成数据修改" />
+    <MESSAGE value="第五节：&#10;逆向工程 生成car对象，并作 统一化修改" />
+    <MESSAGE value="第五节：&#10;完成 driver-car-relationship 绑定/解绑 操作和测试" />
+    <MESSAGE value="第五节：&#10;完成 api-boss与&#10;service-driver-user添加车辆和绑定/解绑 编写和联调" />
+    <MESSAGE value="第五节：&#10;完成 api-driver查询司机是否存在，并请求验证码" />
+    <MESSAGE value="第五节：&#10;完成 api-driver司机验证码校验" />
+    <MESSAGE value="第五节：&#10;完成 service-driver-user司机工作状态表 插入；&#10;第五节完结" />
+    <MESSAGE value="第六节：&#10;service-map管理车辆柜子&#10;完成 服务中心创建和终端（车辆注册）创建" />
+    <MESSAGE value="第六节：&#10;service-driver-user添加车辆时，同时在终端注册车辆（实现：调用service-map）" />
+    <MESSAGE value="第六节：&#10;终端轨迹；&#10;改造终端，增加desc字段，快速查询" />
+    <MESSAGE value="第六节：&#10;完结" />
+    <MESSAGE value="第七节：&#10;完成乘客端 参数传递 接口" />
+    <MESSAGE value="第七节：&#10;Passenger order blacklist setup(redis)" />
+    <MESSAGE value="第七节：&#10;Dispatch orders to driver with Redisson to solve concurrency problems" />
+    <MESSAGE value="Order dispatching" />
+    <MESSAGE value="第七节：&#10;redisson;&#10;services-sse-comm initialization and test setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="第七节：&#10;redisson;&#10;services-sse-comm initialization and test setup" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -27,6 +27,10 @@ public class AmapConfigConstants {
     // 车辆范围查询
     public static final String TERMINAL_AROUND_URL = "https://tsapi.amap.com/v1/track/terminal/aroundsearch";
 
+    // 轨迹查询
+    public static final String TERMINAL_TRSEARCH = "https://tsapi.amap.com/v1/track/terminal/trsearch";
+
+
     // 路径规划 key
     public static final String STATUS = "status";
     public static final String ROUTE = "route";

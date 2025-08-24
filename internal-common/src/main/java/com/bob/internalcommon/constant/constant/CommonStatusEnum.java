@@ -50,6 +50,7 @@ public enum CommonStatusEnum {
     ORDER_PENDING(1600, "ORDER_PENDING"),
     DEVICE_IS_BLACKED(1601, "DEVICE_IS_BLACKED"),
 
+    ORDER_CANCEL_ERROR(1602,"ORDER_CANCEL_ERROR"),
 
     SUCCESS(1, "success"),
     FAIL(0, "fail")

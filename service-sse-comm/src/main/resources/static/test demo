@@ -1,0 +1,2 @@
+connect: http://localhost:9000/service-sse-comm-test.html
+push: http://localhost:9000/push?userId=1&identity=1&content=MAXX

@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>司机监听测试页面 - 模拟司机客户端</h1>
+<div id="message">展示服务的推送过来消息的地方</div>
+<button onclick="setMessageContent('鼠标点我了')">测试message展示</button>
+<button onclick="sourceClose()">测试source关闭</button>
+
+<script>
+    source = null;
+    userId = 1
+    identity = 1
+    if(window.EventSource){
+        console.info("此浏览器支持SSE");
+        source = new EventSource("http://localhost:9000/connect?userId=" + userId + "&identity=" + identity);
+
+        // 监听服务的推送信息
+        source.addEventListener("message", function(e){
+            content = e.data;
+            console.log("消息内容：" + content);
+
+            setMessageContent(content)
+        })
+    }else{
+        setMessageContent("此浏览器不支持")
+    }
+
+    function setMessageContent(content){
+        document.getElementById("message").innerHTML += (content + '<br>')
+    }
+
+    function sourceClose(){
+        console.log("close方法执行")
+        // 客户端source关闭
+        source.close();
+        // 服务端map的移除
+        httpRequest = new XMLHttpRequest();
+        httpRequest.open("get", "http://localhost:9000/close?userId=" + userId + "&identity=" + identity);
+        httpRequest.send();
+    }
+</script>
+</body>
+</html>

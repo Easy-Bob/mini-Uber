@@ -4,6 +4,7 @@ import com.bob.internalcommon.constant.constant.AmapConfigConstants;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.internalcommon.constant.response.ServiceResponsse;
 import com.bob.internalcommon.constant.response.TerminalResponse;
+import com.bob.internalcommon.constant.response.TrsearchResponse;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,4 +91,48 @@ public class TerminalClient {
 
         return ResponseResult.success(terminalResponseList);
     }
+
+    public ResponseResult<TrsearchResponse> trsearch(String tid, Long starttime, Long endtime) {
+            // 拼装请求的url
+            StringBuilder url = new StringBuilder();
+            url.append(AmapConfigConstants.TERMINAL_TRSEARCH);
+            url.append("?");
+            url.append("key="+key);
+            url.append("&");
+            url.append("sid="+sid);
+            url.append("&");
+            url.append("tid="+tid);
+            url.append("&");
+            url.append("starttime="+starttime);
+            url.append("&");
+            url.append("endtime="+endtime);
+
+            System.out.println("轨迹结果请求："+url.toString());
+            ResponseEntity<String> forEntity = restTemplate.getForEntity(url.toString(), String.class);
+            System.out.println("轨迹结果响应："+forEntity.getBody());
+
+            JSONObject result = JSONObject.fromObject(forEntity.getBody());
+            JSONObject data = result.getJSONObject("data");
+            int counts = data.getInt("counts");
+            if (counts == 0){
+                return null;
+            }
+            JSONArray tracks = data.getJSONArray("tracks");
+            long driveMile = 0L;
+            long driveTime = 0L;
+            for (int i=0;i<tracks.size();i++){
+                JSONObject jsonObject = tracks.getJSONObject(i);
+
+                long distance = jsonObject.getLong("distance");
+                driveMile = driveMile + distance;
+
+                long time = jsonObject.getLong("time");
+                time = time / (1000 * 60);
+                driveTime = driveTime + time;
+            }
+            TrsearchResponse trsearchResponse = new TrsearchResponse();
+            trsearchResponse.setDriveMile(driveMile);
+            trsearchResponse.setDriveTime(driveTime);
+            return ResponseResult.success(trsearchResponse);
+        }
 }

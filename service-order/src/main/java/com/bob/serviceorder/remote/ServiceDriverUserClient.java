@@ -1,5 +1,6 @@
 package com.bob.serviceorder.remote;
 
+import com.bob.internalcommon.constant.dto.Car;
 import com.bob.internalcommon.constant.dto.PriceRule;
 import com.bob.internalcommon.constant.dto.ResponseResult;
 import com.bob.internalcommon.constant.response.OrderDriverResponse;
@@ -21,4 +22,7 @@ public interface ServiceDriverUserClient {
 
     @GetMapping("/get-available-driver/{carId}")
     public ResponseResult<OrderDriverResponse> getAvailableDriver(@PathVariable("carId") Long carId);
+
+    @GetMapping("/car")
+    public ResponseResult<Car> getCarById(@RequestParam  Long carId);
 }

@@ -1,5 +1,6 @@
 package com.bob.serviceprice.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bob.internalcommon.constant.constant.CommonStatusEnum;
 import com.bob.internalcommon.constant.dto.PriceRule;
 import com.bob.internalcommon.constant.dto.ResponseResult;
@@ -120,5 +121,25 @@ public class ForecastPriceService {
         priceRule.setStartFare(10.0);
         priceRule.setStartMile(3);
 //        System.out.println(getPrice(6500, 1800, priceRule));
+    }
+
+    public ResponseResult<Double> calculatePrice(Integer distance, Integer duration, String cityCode, String vehicleType) {
+        // 查询计价规则
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("city_code",cityCode);
+        queryWrapper.eq("vehicle_type",vehicleType);
+        queryWrapper.orderByDesc("fare_version");
+
+        List<PriceRule> priceRules = priceRuleMapper.selectList(queryWrapper);
+        if (priceRules.size() == 0){
+            return ResponseResult.fail(CommonStatusEnum.PRICE_RULE_EMPTY.getCode(),CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
+        }
+
+        PriceRule priceRule = priceRules.get(0);
+
+        log.info("根据距离、时长和计价规则，计算价格");
+
+        double price = getPrice(distance, duration, priceRule);
+        return ResponseResult.success(price);
     }
 }
